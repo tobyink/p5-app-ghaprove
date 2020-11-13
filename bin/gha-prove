@@ -6,7 +6,7 @@ use warnings;
 my $testing_mode = $ENV{GHA_TESTING_MODE}  || 0;
 my $coverage     = $ENV{GHA_TESTING_COVER} || 0;
 
-if ( $coverage ) {
+if ( $coverage =~ /^(true|1)$/i ) {
 	$ENV{HARNESS_PERL_SWITCHES} = '-MDevel::Cover';
 }
 

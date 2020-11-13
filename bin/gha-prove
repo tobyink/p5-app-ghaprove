@@ -10,14 +10,20 @@ if ( $coverage =~ /^(true|1)$/i ) {
 	$ENV{HARNESS_PERL_SWITCHES} = '-MDevel::Cover';
 }
 
-if ( $testing_mode !~ /^(extended|1)$/i ) {
+my $error_code = 0;
+
+if ( $testing_mode !~ /^(extended|1)$/i and not $error_code  ) {
 	delete $ENV{EXTENDED_TESTING};
 	print "# ~~ Standard testing\n";
 	system( 'prove', @ARGV );
+	$error_code += $?;
 }
 
-if ( $testing_mode =~ /^(extended|both|1|2)$/i ) {
+if ( $testing_mode =~ /^(extended|both|1|2)$/i and not $error_code ) {
 	$ENV{EXTENDED_TESTING} = 1;
 	print "# ~~ Extended testing\n";
 	system( 'prove', @ARGV );
+	$error_code += $?;
 }
+
+exit( $error_code );

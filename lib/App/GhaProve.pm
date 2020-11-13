@@ -19,6 +19,24 @@ __END__
 
 App::GhaProve - provides gha-prove app
 
+=head1 ENVIRONMENT
+
+C<< GHA_TESTING_COVER=1 >> or C<< GHA_TESTING_COVER=true >>
+
+Turn on Devel::Cover.
+
+C<< GHA_TESTING_MODE=0 >> or C<< GHA_TESTING_MODE=standard >> 
+
+Run test suite without EXTENDED_TESTING.
+
+C<< GHA_TESTING_MODE=1 >> or C<< GHA_TESTING_MODE=extended >> 
+
+Run test suite with EXTENDED_TESTING=1.
+
+C<< GHA_TESTING_MODE=2 >> or C<< GHA_TESTING_MODE=both >> 
+
+Run test suite twice, using each of the above.
+
 =head1 BUGS
 
 Please report any bugs to

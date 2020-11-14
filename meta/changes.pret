@@ -12,3 +12,6 @@
 	issued  2020-11-14;
 	label   "Really fixed exit code".
 
+`App-GhaProve 0.004 cpan:TOBYINK`
+	issued  2020-11-14;
+	label   "I really hate exit codes".

@@ -15,15 +15,13 @@ my $error_code = 0;
 if ( $testing_mode !~ /^(extended|1)$/i and not $error_code  ) {
 	delete $ENV{EXTENDED_TESTING};
 	print "# ~~ Standard testing\n";
-	system( 'prove', @ARGV );
-	$error_code += $?;
+	$error_code += system( 'prove', @ARGV );
 }
 
 if ( $testing_mode =~ /^(extended|both|1|2)$/i and not $error_code ) {
 	$ENV{EXTENDED_TESTING} = 1;
 	print "# ~~ Extended testing\n";
-	system( 'prove', @ARGV );
-	$error_code += $?;
+	$error_code += system( 'prove', @ARGV );
 }
 
 exit( $error_code );

@@ -10,18 +10,24 @@ if ( $coverage =~ /^(true|1)$/i ) {
 	$ENV{HARNESS_PERL_SWITCHES} = '-MDevel::Cover';
 }
 
-my $error_code = 0;
+my @errors;
 
-if ( $testing_mode !~ /^(extended|1)$/i and not $error_code  ) {
+if ( $testing_mode !~ /^(extended|1)$/i ) {
 	delete $ENV{EXTENDED_TESTING};
 	print "# ~~ Standard testing\n";
-	$error_code += system( 'prove', @ARGV );
+	push @errors, system( 'prove', @ARGV );
 }
 
-if ( $testing_mode =~ /^(extended|both|1|2)$/i and not $error_code ) {
+if ( $testing_mode =~ /^(extended|both|1|2)$/i ) {
 	$ENV{EXTENDED_TESTING} = 1;
 	print "# ~~ Extended testing\n";
-	$error_code += system( 'prove', @ARGV );
+	push @errors, system( 'prove', @ARGV );
 }
 
-exit( $error_code );
+my ( $max ) = sort { $b <=> $a } @errors;
+
+if ( $max > 254 ) {
+	$max = 254;
+}
+
+exit( $max );

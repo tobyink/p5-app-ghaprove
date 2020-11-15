@@ -21,3 +21,12 @@
 	changeset [
 		item "Actually fix exit code."^^Bugfix;
 	].
+
+`App-GhaProve 0.005 cpan:TOBYINK`
+	issued  2020-11-15;
+	changeset [
+		item "Add a SYNOPSIS and DESCRIPTION."^^Documentation;
+		item "Add pod to the script itself."^^Documentation;
+		item "Move the bulk of the work from the script to the module."^^Change;
+		item "Test that the module does more than just compile okay."^^Tests;
+	].

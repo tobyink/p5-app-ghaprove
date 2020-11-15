@@ -87,7 +87,7 @@ With a callback (instead of C<< CORE::system >>):
 =head1 DESCRIPTION
 
 C<< gha-prove >> is just a small wrapper around the C<< prove >> command.
-It will inspect C<< GHA_* >>> environment variables and this will affect
+It will inspect C<< GHA_* >> environment variables and this will affect
 how it calls C<< prove >>, perhaps calling C<< prove >> multiple times.
 It is intended to be used in continuous integration environments, such as
 GitHub Actions.

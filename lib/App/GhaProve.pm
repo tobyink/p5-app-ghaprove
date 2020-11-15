@@ -7,10 +7,12 @@ package App::GhaProve;
 our $AUTHORITY = 'cpan:TOBYINK';
 our $VERSION   = '0.004';
 
+our $QUIET = 0;
+
 sub _system { scalar system( @_ ) }
 
 sub go {
-	my ( @args ) = @_;
+	my ( $class, @args ) = ( shift, @_ );
 	my $system = ref( $args[0] ) eq 'CODE' ? shift(@args) : \&_system;
 	
 	my $testing_mode = $ENV{GHA_TESTING_MODE}  || 0;
@@ -30,13 +32,13 @@ sub go {
 	
 	if ( $testing_mode !~ /^(extended|1)$/i ) {
 		delete $ENV{EXTENDED_TESTING};
-		print "# ~~ Standard testing\n";
+		print "# ~~ Standard testing\n" unless $QUIET;
 		push @errors, $system->( 'prove', @args );
 	}
 
 	if ( $testing_mode =~ /^(extended|both|1|2)$/i ) {
 		$ENV{EXTENDED_TESTING} = 1;
-		print "# ~~ Extended testing\n";
+		print "# ~~ Extended testing\n" unless $QUIET;
 		push @errors, $system->( 'prove', @args );
 	}
 	
@@ -89,6 +91,10 @@ It will inspect C<< GHA_* >>> environment variables and this will affect
 how it calls C<< prove >>, perhaps calling C<< prove >> multiple times.
 It is intended to be used in continuous integration environments, such as
 GitHub Actions.
+
+Setting C<< $App::GhaProve::QUIET = 1 >> will suppress additional output
+from App::GhaProve, showing only output from C<< prove >>. (There is
+very little output from App::GhaProve anyway.)
 
 =head1 ENVIRONMENT
 

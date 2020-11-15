@@ -6,12 +6,18 @@
 
 `App-GhaProve 0.002 cpan:TOBYINK`
 	issued  2020-11-13;
-	label   "Fixed exit code".
+	changeset [
+		item "Attempt at fixing exit code."^^Bugfix;
+	].
 
 `App-GhaProve 0.003 cpan:TOBYINK`
 	issued  2020-11-14;
-	label   "Really fixed exit code".
+	changeset [
+		item "Another attempt at fixing exit code."^^Bugfix;
+	].
 
 `App-GhaProve 0.004 cpan:TOBYINK`
 	issued  2020-11-14;
-	label   "I really hate exit codes".
+	changeset [
+		item "Actually fix exit code."^^Bugfix;
+	].

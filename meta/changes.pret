@@ -30,3 +30,10 @@
 		item "Move the bulk of the work from the script to the module."^^Change;
 		item "Test that the module does more than just compile okay."^^Tests;
 	].
+
+`App-GhaProve 0.006 cpan:TOBYINK`
+	issued  2021-01-11;
+	changeset [
+		item "Print extra output to check which version of `prove` is being used on old Perls."^^Change;
+		item "Use GitHub issue tracker."^^Packaging;
+	].

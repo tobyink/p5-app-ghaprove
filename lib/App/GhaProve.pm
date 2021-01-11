@@ -14,9 +14,11 @@ sub _system { scalar system( @_ ) }
 sub _maybe_warn {
 	my ( $class, $system ) = ( shift, @_ );
 	return if $] > 5.012000;
-	print "PERL VERSION: $]\n";
+	return if $QUIET;
+	print "PERL VERSION:  $]\n";
 	print "PROVE VERSION: ";
 	$system->( 'prove', '-V' );
+	return;
 }
 
 sub go {

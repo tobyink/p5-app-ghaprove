@@ -37,3 +37,9 @@
 		item "Print extra output to check which version of `prove` is being used on old Perls."^^Change;
 		item "Use GitHub issue tracker."^^Packaging;
 	].
+
+`App-GhaProve 0.007 cpan:TOBYINK`
+	issued  2021-01-12;
+	changeset [
+		item "Require Test::Harness 2.40."^^Packaging;
+	].

@@ -43,3 +43,9 @@
 	changeset [
 		item "Require Test::Harness 2.40."^^Packaging;
 	].
+
+`App-GhaProve 0.008 cpan:TOBYINK`
+	issued  2021-01-17;
+	changeset [
+		item "Require ExtUtils::MakeMaker 6.64; not actually needed but we want it installed in GitHub Actions runners for cpanm compatibility."^^Packaging;
+	].
